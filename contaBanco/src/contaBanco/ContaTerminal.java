@@ -1,11 +1,13 @@
 package contaBanco;
 
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class ContaTerminal {
 	public static void main (String[] args) {
 		//criando o objeto scanner
+		try {
 		Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
         
 		System.out.println("Por favor,digite o numero da Conta!");
@@ -25,7 +27,11 @@ public class ContaTerminal {
         
         System.out.print("sua agencia e " + (String)agencia + " conta " + numero +","+" seu saldo " + saldo + 
         " ja esta disponivel para saque!");
-
+		}
+		catch(InputMismatchException e) {
+			System.err.println("O campo Saldo da conta precisa ser usado com '.' ex: 0.00");
+		}
+		
 		
 		
 	}
